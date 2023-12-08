@@ -13,7 +13,7 @@ int fileReadLine(int targetLineNumber) {
    * line?*/
 
   // Ask the OS for permission to read/write specified file
-  std::ifstream inputFile("tiles.txt");
+  std::ifstream inputFile("Bouncing-Ball/text_files/tiles.txt");
 
   if (inputFile.is_open()) {
     // The current line number
