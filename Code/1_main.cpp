@@ -2,7 +2,7 @@
 // Make a game where a ball bounces off a wall and you control the ball by changing the angle of a wall
 
 #include <iostream>
-#include "0_header.h"
+#include "0_header.hpp"
 
 
 unsigned int wallAngle = 180;

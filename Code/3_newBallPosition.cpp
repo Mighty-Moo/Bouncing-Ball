@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cmath>
-#include "0_header.h"
+#include "0_header.hpp"
 
 // The angle of the wall's tilt
 extern unsigned int wallAngle;

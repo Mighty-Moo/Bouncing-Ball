@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sys/ioctl.h>
 #include <unistd.h>
+#include "0_header.hpp"
 
 extern unsigned int windowWidth;
 extern unsigned int windowHeight;

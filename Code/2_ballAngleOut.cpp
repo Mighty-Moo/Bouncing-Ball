@@ -1,4 +1,4 @@
-#include "0_header.h"
+#include "0_header.hpp"
 #include <iostream>
 // Determines the new angle of the ball after it hits the wall
 // Access the global variables in main.cpp

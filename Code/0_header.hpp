@@ -1,5 +1,5 @@
-#ifndef _0_HEADER_H
-#define _0_HEADER_H
+#ifndef _0_HEADER_HPP
+#define _0_HEADER_HPP
 #include <iostream>
 
 //Wall's angle of tilt in degrees
