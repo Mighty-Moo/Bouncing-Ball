@@ -18,7 +18,10 @@ extern unsigned int windowHeight;
 extern std::string tileContent;
 
 void ball();
-int windowSizeUpdate();
 void drawMap();
+void fileReadLine(int targetLineNumber);
+int windowSizeUpdate();
+
+
 
 #endif

@@ -21,6 +21,7 @@ std::string tileContent;
 int main() {
 
   windowSizeUpdate();
+  fileReadLine(1);
   drawMap();
 
   

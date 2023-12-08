@@ -1,12 +1,12 @@
-#include "0_header.hpp"
-#include <fstream>
 #include <iostream>
 #include <limits>
 #include <string>
+#include <fstream>
+#include "0_header.hpp"
 
 extern std::string tileContent;
 
-int fileReadLine(int targetLineNumber) {
+void fileReadLine(int targetLineNumber) {
   // The number of the line to be read
 
   /* Maybe instead of std::string use char the size of the counted chars on the
@@ -31,5 +31,5 @@ int fileReadLine(int targetLineNumber) {
     inputFile.close();
   }
 
-  return 0;
+
 }
