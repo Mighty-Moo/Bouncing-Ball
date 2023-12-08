@@ -1,1 +1,10 @@
 Make a structure to hold the ball calculations.
+File names for reference:
+
+0_header.h
+1_main.cpp
+2_ballAngleOut.cpp
+3_newBallPosition.cpp
+4_interface.cpp
+5_drawMap.cpp
+6_Window Size.cpp
