@@ -15,7 +15,7 @@ int windowSizeUpdate() {
   windowHeight = size.ws_row;
 
   //Tells player if window is too small
-  if(windowHeight > 2 || windowWidth > 25) {
+  if(windowHeight < 2 || windowWidth < 25) {
     std::cout << "\033[2J\033[0;0H";
     std::cout << "Literally Unplayable";
     //If window is too small, close program
