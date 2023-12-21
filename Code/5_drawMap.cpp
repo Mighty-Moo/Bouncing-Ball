@@ -15,7 +15,7 @@ void drawMap() {
   std::cout << "\033[2J";
   //Draw Map
   for(int y = 0; y != windowHeight; y++) {
-    std::cout << "\033[" << y+1 << ";" << 12 << "H" << "H" << "\033[" << y << ";" << (windowWidth - 14) << "H" << tileContent;
+    std::cout << "\033[" << y << ";" << 12 << tileContent << "H" << "\033[" << y << ";" << (windowWidth - 14) << "H" << tileContent;
   }
 
 }

@@ -13,16 +13,14 @@ void fileReadLine(int targetLineNumber) {
    * line?*/
 
   // Ask the OS for permission to read/write specified file
-  std::ifstream inputFile("Bouncing-Ball/text_files/tiles.txt");
+  std::ifstream inputFile("/text_files/tiles.txt");
 
   if (inputFile.is_open()) {
     // The current line number
     unsigned int currentLine = 1;
 
     // Read until the target line or end of file
-    while (
-        currentLine < targetLineNumber &&
-        inputFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n')) {
+    while (currentLine < targetLineNumber && inputFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n')) {
       currentLine++;
     }
 
