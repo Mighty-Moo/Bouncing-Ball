@@ -10,12 +10,26 @@ extern std::string tileContent;
 void drawMap() {
 
 
-
+  
   //Clear screen
-  std::cout << "\033[2J";
+  std::cout << CLEARSCREEN;
   //Draw Map
-  for(int y = 0; y != windowHeight; y++) {
-    std::cout << "\033[" << y << ";" << 12 << tileContent << "H" << "\033[" << y << ";" << (windowWidth - 14) << "H" << tileContent;
+  for(int HeightPos = 0; HeightPos != windowHeight; HeightPos++) {
+    std::cout << "\033[" << HeightPos << ";" << WALL_BUFFER_SIZE + 1 /* +1 adds a space for the char*/ << "H" << WALL_CHAR << "\033[" << HeightPos << ";" << (WALL_BUFFER_SIZE * 4) - 1 << "H" << WALL_CHAR;
+  }
+
+  for(int HeightPos = 0; HeightPos != windowHeight; HeightPos++) {
+    std::cout << "\033[" << HeightPos << ";1H";
+    for(int i = 0; i < WALL_BUFFER_SIZE; i++) {
+
+      std::cout << "-";
+    }
+    std::cout << "\033[" << HeightPos << ";" << (WALL_BUFFER_SIZE * 4) << "H";
+
+    for(int i = (WALL_BUFFER_SIZE * 4); i <= windowWidth; i++) {
+
+      std::cout << "-";
+    }
   }
 
 }

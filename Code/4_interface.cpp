@@ -1,33 +1,24 @@
 #include <iostream>
-#include <limits>
-#include <string>
 #include <fstream>
+#include <string>
 #include "0_header.hpp"
 
+// Declare tileContent globally so that it can be accessed externally
 extern std::string tileContent;
 
 void fileReadLine(int targetLineNumber) {
-  // The number of the line to be read
+    // Ask the OS for permission to read specified file
+    std::ifstream inputFile("text_files/tiles.txt");  // Adjust the file path accordingly
 
-  /* Maybe instead of std::string use char the size of the counted chars on the
-   * line?*/
-
-  // Ask the OS for permission to read/write specified file
-  std::ifstream inputFile("/text_files/tiles.txt");
-
-  if (inputFile.is_open()) {
     // The current line number
     unsigned int currentLine = 1;
 
-    // Read until the target line or end of file
-    while (currentLine < targetLineNumber && inputFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n')) {
-      currentLine++;
+    // Read until the target line
+    while (currentLine < targetLineNumber && std::getline(inputFile, tileContent)) {
+        currentLine++;
     }
 
-    std::getline(inputFile, tileContent);
-
+    // Close the file before returning
     inputFile.close();
-  }
-
-
 }
+
