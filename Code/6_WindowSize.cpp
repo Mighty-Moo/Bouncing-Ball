@@ -5,11 +5,16 @@
 
 extern unsigned int windowWidth;
 extern unsigned int windowHeight;
+extern unsigned int prevWidth;
+extern unsigned int prevHeigth;
 
 int windowSizeUpdate() {
   struct winsize size;
   
   ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
+
+  prevHeigth = windowHeight;
+  prevWidth = windowWidth;
 
   windowWidth = size.ws_col;
   windowHeight = size.ws_row;

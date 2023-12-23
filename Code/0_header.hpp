@@ -14,6 +14,8 @@ extern unsigned int pointXY[2]; //Ball's location cordinate's
 extern unsigned int newPointXY[2];  //Ball's new location cordinate's
 extern unsigned int windowWidth; //Width of terminal window
 extern unsigned int windowHeight;   //Hieght of terminal window
+extern unsigned int prevWidth;
+extern unsigned int prevHeigth;
 
 extern std::string tileContent;
 

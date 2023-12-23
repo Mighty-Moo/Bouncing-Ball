@@ -13,6 +13,9 @@ unsigned int newPointXY[2];
 //Window height and width
 unsigned int windowWidth;
 unsigned int windowHeight;
+unsigned int prevWidth = 0;
+unsigned int prevHeigth = 0;
+
 //Tile
 std::string tileContent;
 
@@ -21,8 +24,16 @@ std::string tileContent;
 int main() {
 
   windowSizeUpdate();
-  fileReadLine(1);
-  drawMap();
+
+  for (; ;) {
+  
+  windowSizeUpdate();
+  if (windowHeight != prevHeigth || windowWidth != prevWidth) {
+    drawMap();
+  }
+  
+
+  }
 
   
 }
