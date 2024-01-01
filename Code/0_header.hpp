@@ -1,28 +1,50 @@
 #ifndef _0_HEADER_HPP
 #define _0_HEADER_HPP
+
 #include <iostream>
+#include <sys/ioctl.h>
+#include <cmath>
+#include <unistd.h>
+#include <fstream>
 
 #define CLEARSCREEN "\033[2J"
 #define WALL_CHAR "H"
 #define WALL_BUFFER_SIZE (windowWidth/5)
+#define Win_Height size.ws_row
+#define Win_Width size.ws_col
 
 
-extern unsigned int wallAngle;  //Wall's angle of tilt in degrees
-extern unsigned int ballAngle;  //Ball's angle
-extern unsigned int OldBallAngle;   //The old ball angle
-extern unsigned int pointXY[2]; //Ball's location cordinate's
-extern unsigned int newPointXY[2];  //Ball's new location cordinate's
-extern unsigned int windowWidth; //Width of terminal window
-extern unsigned int windowHeight;   //Hieght of terminal window
-extern unsigned int prevWidth;
-extern unsigned int prevHeigth;
+class Interface {
+  public:
 
-extern std::string tileContent;
+  //Draws wall of 'H'
+  void drawWall();
+  void drawBrick();
+  //Gets window size and also terminates program if window is too small
+  int windowSizeUpdate();
+  //Suposedly reads a file by a specified line
+  void fileReadLine(int targetLineNumber);
 
-void ball();
-void drawMap();
-void fileReadLine(int targetLineNumber);
-int windowSizeUpdate();
+  unsigned int prevWidth;      //The Preveous Width of the terminal
+  unsigned int prevHeight;     //The Preveous Height of the terminal  
+};
+
+class Ball {
+  double ballAngle;
+  double OldBallAngle;
+  int pointXY[2];
+
+  //Obtains the ball's position
+  void ballPosition();
+
+  //Gets ball position
+  void ball();
+
+};
+
+
+
+
 
 
 
