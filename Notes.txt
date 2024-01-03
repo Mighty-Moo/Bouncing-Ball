@@ -1,7 +1,9 @@
 Make a structure to hold the ball calculations.
 File names for reference:
 
+Consider makeing a seperate .hpp file for classes
+
 0_header.hpp
 1_main.cpp
-2_Interface.cpp
-3_ballStuff.cpp
+4_Interface.cpp
+5_ballStuff.cpp
