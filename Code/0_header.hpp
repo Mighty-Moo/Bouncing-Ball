@@ -9,11 +9,10 @@
 
 #define CLEARSCREEN "\033[2J"
 #define WALL_CHAR "H"
-#define WALL_BUFFER_SIZE (Win_Width/5)
-#define Win_Height size.ws_row
-#define Win_Width size.ws_col
+#define WALL_BUFFER_SIZE (windowWidth / 5)
 
-struct winsize size;
+
+
 
 class Interface {
   public:
@@ -24,7 +23,8 @@ class Interface {
   //Gets window size and also terminates program if window is too small
   int windowSizeUpdate();
 
-
+  unsigned int windowWidth;
+  unsigned int windowHeight;
   unsigned int prevWidth;      //The Preveous Width of the terminal
   unsigned int prevHeight;     //The Preveous Height of the terminal  
 };
