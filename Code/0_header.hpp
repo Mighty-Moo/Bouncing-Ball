@@ -9,10 +9,11 @@
 
 #define CLEARSCREEN "\033[2J"
 #define WALL_CHAR "H"
-#define WALL_BUFFER_SIZE (windowWidth/5)
+#define WALL_BUFFER_SIZE (Win_Width/5)
 #define Win_Height size.ws_row
 #define Win_Width size.ws_col
 
+struct winsize size;
 
 class Interface {
   public:
@@ -22,17 +23,20 @@ class Interface {
   void drawBrick();
   //Gets window size and also terminates program if window is too small
   int windowSizeUpdate();
-  //Suposedly reads a file by a specified line
-  void fileReadLine(int targetLineNumber);
+
 
   unsigned int prevWidth;      //The Preveous Width of the terminal
   unsigned int prevHeight;     //The Preveous Height of the terminal  
 };
 
-class Ball {
+/* class Ball {
+  public:
+
+  double wallAngle;
   double ballAngle;
-  double OldBallAngle;
+  double OldBallAngle = 0;
   int pointXY[2];
+  int newPointXY[2];
 
   //Obtains the ball's position
   void ballPosition();
@@ -40,7 +44,7 @@ class Ball {
   //Gets ball position
   void ball();
 
-};
+}; */
 
 
 

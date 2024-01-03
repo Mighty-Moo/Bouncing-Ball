@@ -7,19 +7,15 @@
 
 //Main is in charge of calling and integrating all of these functions
 int main() {
+
   //Create an instance of the Interface class
   Interface myInterface;
-  Ball myBall;
+  //Ball myBall;
 
   myInterface.prevWidth = 0;
   myInterface.prevHeight = 0;
 
-  myBall.OldBallAngle = 0;
-
-
-
-
-
+  //myBall.OldBallAngle = 0;
 
 
   //Do this the first time
@@ -29,16 +25,15 @@ int main() {
 
 
   for (; ;) {
-  
-  //Update window size
-  myInterface.windowSizeUpdate();
 
-  if (Win_Height != myInterface.prevHeight || Win_Width != myInterface.prevWidth) {
-    myInterface.drawWall();
-    myInterface.drawBrick();
-  }
-  
+    //Update window size
+    myInterface.windowSizeUpdate();
 
+    if (Win_Height != myInterface.prevHeight || Win_Width != myInterface.prevWidth) {
+      myInterface.drawWall();
+      myInterface.drawBrick();
+    }
+  
   }
 
   

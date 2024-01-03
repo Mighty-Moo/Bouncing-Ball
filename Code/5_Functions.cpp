@@ -37,8 +37,7 @@
 
 
     //Gets window size and terminates program if window is too small
-    int Interface::windowSizeUpdate() {
-  struct winsize size;
+int Interface::windowSizeUpdate() {
   
   ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
 
@@ -55,21 +54,3 @@
   return(0);
 }
   
-
-
-    //Suposedly reads a file by a specified line
-    void Interface::fileReadLine(int targetLineNumber) {
-    // Ask the OS for permission to read specified file
-    std::ifstream inputFile("text_files/tiles.txt");  // Adjust the file path accordingly
-
-    // The current line number
-    unsigned int currentLine = 1;
-
-    // Read until the target line
-    while (currentLine < targetLineNumber && std::getline(inputFile, tileContent)) {
-        currentLine++;
-    }
-
-    // Close the file before returning
-    inputFile.close();
-}
