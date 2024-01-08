@@ -7,6 +7,9 @@
 #include <unistd.h>
 #include <fstream>
 
+//For conditional compilation
+#define DEBUG
+//Define a clearscreen shortcut
 #define CLEARSCREEN "\033[2J"
 #define WALL_CHAR "H"
 #define WALL_BUFFER_SIZE (windowWidth / 5)
@@ -29,24 +32,27 @@ class Interface {
   unsigned int prevHeight;     //The Preveous Height of the terminal  
 };
 
-/* class Ball {
+/*
+class Ball {
   public:
 
-  double wallAngle;
-  double ballAngle;
+  double wallAngle = 0;
+  double ballAngle = 0;
   double OldBallAngle = 0;
+
+  //[0] is X and [1] is y
   int pointXY[2];
   int newPointXY[2];
 
   //Obtains the ball's position
-  void ballPosition();
+  void ballDistance();
 
   //Gets ball position
   void ball();
 
-}; */
+};
 
-
+*/
 
 
 

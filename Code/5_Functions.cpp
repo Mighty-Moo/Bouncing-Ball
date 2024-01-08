@@ -28,13 +28,20 @@ void Interface::drawBrick() {
       std::cout << "\033[" << HeightPos << ";" << widthPos << "H";
       std::cout << '-';
     }
-
-
     
+    //Clear output stream
+    std::cout << std::endl;
+
+
+    //Prints wall on other side of screen
     for(int i = (WALL_BUFFER_SIZE * 4); i <= windowWidth; i++) {
       std::cout << "\033[" << HeightPos << ";" << i << "H";
       std::cout << "-";
     }
+
+    //Clear output stream
+    std::cout << std::endl;
+
   }
 
 }
@@ -48,18 +55,14 @@ int Interface::windowSizeUpdate() {
   prevHeight = windowHeight;
   prevWidth = windowWidth;
 
+  //Get window size
   ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
   
+  //Set window size variables
   windowHeight = size.ws_row;
   windowWidth = size.ws_col;
 
-  //Tells player if window is too small
-  if(size.ws_row < 10 || size.ws_col < 40) {
-    std::cout << "\033[2J\033[0;0H";
-    std::cerr << "Literally Unplayable" << std::endl;
-    //If window is too small, close program
-    return(-1);
-  }
+
   return(0);
 }
   
