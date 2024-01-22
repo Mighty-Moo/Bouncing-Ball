@@ -32,27 +32,27 @@ class Interface {
   unsigned int prevHeight;     //The Preveous Height of the terminal  
 };
 
-/*
+
 class Ball {
   public:
-
-  double wallAngle = 0;
-  double ballAngle = 0;
-  double OldBallAngle = 0;
+  
+  long wallAngle;
+  long ballAngle;
+  long OldBallAngle;
 
   //[0] is X and [1] is y
   int pointXY[2];
-  int newPointXY[2];
+  int oldPointXY[2];
 
   //Obtains the ball's position
-  void ballDistance();
+  void setPosition();
 
   //Gets ball position
   void ball();
 
 };
 
-*/
+
 
 
 

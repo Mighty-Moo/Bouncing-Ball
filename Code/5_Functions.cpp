@@ -47,8 +47,7 @@ void Interface::drawBrick() {
 }
   
 
-
-    //Gets window size and terminates program if window is too small
+//Gets window size and terminates program if window is too small
 int Interface::windowSizeUpdate() {
   struct winsize size;
 
