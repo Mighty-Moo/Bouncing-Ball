@@ -8,7 +8,7 @@
       std::cout << CLEARSCREEN;
 
       //Draw Map
-      for(int HeightPos = 0; HeightPos != windowHeight; HeightPos++) {
+      for(int HeightPos = 1; HeightPos != windowHeight; HeightPos++) {
         std::cout << "\033[" << HeightPos << ";" << WALL_BUFFER_SIZE + 1 /* +1 adds a space for the char*/ << "H" << WALL_CHAR << "\033[" << HeightPos << ";" << (WALL_BUFFER_SIZE * 4) - 1 << "H" << WALL_CHAR;
       }
     }
@@ -20,7 +20,7 @@ void Interface::drawBrick() {
 
 
   //Sets HeightPosition to 0 since it will be that after the screen is cleared. increments until all rows have been gone through
-  for(int HeightPos = 0; HeightPos != windowHeight; HeightPos++) {
+  for(int HeightPos = 1; HeightPos != windowHeight; HeightPos++) {
 
     //Prints a '-' char until certain position
     for(int widthPos = 0; widthPos != WALL_BUFFER_SIZE + 1; widthPos++) {

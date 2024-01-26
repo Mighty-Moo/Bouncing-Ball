@@ -37,8 +37,8 @@ class Ball {
   public:
   
   long wallAngle;
-  long ballAngle;
-  long OldBallAngle;
+  double ballAngle;
+  double OldBallAngle;
 
   //[0] is X and [1] is y
   int pointXY[2];
@@ -48,7 +48,7 @@ class Ball {
   void setPosition();
 
   //Gets ball position
-  void ball();
+  void ball(double wallTilt);
 
 };
 

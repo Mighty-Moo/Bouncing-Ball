@@ -1,8 +1,9 @@
 {
     "configurations": [
+
         
         {
-            "name": "(lldb) Launch",
+            "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/${fileBasenameNoExtension}",
@@ -11,7 +12,7 @@
             "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
-            "MIMode": "lldb"
+            "MIMode": "gdb"
         }
     ],
     "version": "2.0.0"

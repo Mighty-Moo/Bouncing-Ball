@@ -1,6 +1,8 @@
 Make a structure to hold the ball calculations.
 File names for reference:
 
+is speed vertical?
+
 Consider makeing a seperate .hpp file for classes
 
 0_header.hpp
