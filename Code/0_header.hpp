@@ -36,19 +36,26 @@ class Interface {
 class Ball {
   public:
   
-  long wallAngle;
+  Ball(int startPointX, int startPointY, double startBallAngle) {
+    pointXY[0] = startPointX;
+    pointXY[1] = startPointY;
+    ballAngle = startBallAngle;
+  }
+  
+
+  //Obtains the ball's new position and desired angle
+  void setPosition(short int hitWallAndTilt);
+
+  short int wallisHit(unsigned int windowWidth, unsigned int windowHeight);
+
+  private:
+
   double ballAngle;
-  double OldBallAngle;
+  double OldBallAngle = 0;
 
   //[0] is X and [1] is y
   int pointXY[2];
   int oldPointXY[2];
-
-  //Obtains the ball's position
-  void setPosition();
-
-  //Gets ball position
-  void ball(double wallTilt);
 
 };
 
