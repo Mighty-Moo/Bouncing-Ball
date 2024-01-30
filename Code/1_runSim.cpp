@@ -6,12 +6,12 @@
 
 
 //Main is in charge of calling and integrating all of these functions
-int main() {
+int runSim() {
 
 
 
   //Create an instance of the Interface and Ball classes
-  Interface myInterface;
+  SimInterface myInterface;
 
   myInterface.windowSizeUpdate();
 

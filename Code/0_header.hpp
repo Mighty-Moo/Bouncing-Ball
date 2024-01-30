@@ -6,6 +6,8 @@
 #include <cmath>
 #include <unistd.h>
 #include <fstream>
+#include <fstream>
+#include <string>
 
 //For conditional compilation
 #define DEBU
@@ -15,21 +17,33 @@
 #define WALL_BUFFER_SIZE (windowWidth / 5)
 
 
+namespace Functions {
+
+  int runSim();
+
+};
 
 
 class Interface {
-  public:
 
+  public:
 
   //Gets window size and also terminates program if window is too small
   int windowSizeUpdate();
-  //Updates map for window resizes and if window is too small after resize, an error is displayed.
-  void updateMap();
-  
+
   unsigned int windowWidth;    //The Height of the terminal
   unsigned int windowHeight;   //The Width of the terminal
   unsigned int prevWidth;      //The Previous Width of the terminal
   unsigned int prevHeight;     //The Previous Height of the terminal
+
+};
+
+class SimInterface {
+  public:
+
+
+  //Updates map for window resizes and if window is too small after resize, an error is displayed.
+  void updateMap();
 
 
   private:
