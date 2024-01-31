@@ -4,12 +4,12 @@
 #include "0_header.hpp"
 
 //Function to display the menu
-void displayMenu(const char* options[], int selectedOption, unsigned int arraySize, Interface &myInterface) {
+void displayGenericMenu(const char* options[], int selectedOption, unsigned int arraySize, Interface &myInterface) {
   //Clear the screen
   std::cout << CLEARSCREEN;
 
-  //Print the centered menu name
-  std::cout << "\033[0;" << (myInterface.windowWidth - strlen(options[0])) / 2 << "H" << options[0] << std::endl;
+  //Print the centered menu name bold
+  std::cout << "\033[39m\033[1m\033[0;" << (myInterface.windowWidth - strlen(options[0])) / 2 << "H" << options[0] << "\033[22m" << std::endl;
 
   //Print menu options
   for (int i = 1; i < arraySize; ++i) {
@@ -20,7 +20,7 @@ void displayMenu(const char* options[], int selectedOption, unsigned int arraySi
   	}
 
     //Print options centered
-    std::cout << "\033[" << (i * 2) + 6/*number added is starting point, the multiplier is gap between each item*/ << ";" << ((myInterface.windowWidth - strlen(options[i])) / 2) << "H" << options[i] << std::endl;
+    std::cout << "\033[" << (i * 2) + 6 /*number added is starting point, the multiplier is gap between each item*/ << ";" << ((myInterface.windowWidth - strlen(options[i])) / 2) << "H" << options[i] << std::endl;
 
     if (i == selectedOption + 1) {
       std::cout << "\033[27m" << std::endl;  //Turn off highlighting
@@ -43,18 +43,22 @@ int main() {
 	//Do not display input characters
   noecho();
 
+	refresh();
+
 	Interface myInterface;
 
 	myInterface.windowSizeUpdate();
 
 		
 	//Hide cursor
-	std::cout << "\e[?25l";
+	std::cout << "\033[?25l";
 
   while (true) {
 		myInterface.windowSizeUpdate();
     //Display the menu
-    displayMenu(mainMenu, selectedOption, arraySize, myInterface);
+
+    displayGenericMenu(mainMenu, selectedOption, arraySize, myInterface);
+
 
     //Get user input
     choice = getch();
