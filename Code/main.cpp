@@ -3,38 +3,24 @@
 #include <cstring>
 #include "0_header.hpp"
 
-//Function to display the menu
-void displayGenericMenu(const char* options[], int selectedOption, unsigned int arraySize, Interface &myInterface) {
-  //Clear the screen
-  std::cout << CLEARSCREEN;
 
-  //Print the centered menu name bold
-  std::cout << "\033[39m\033[1m\033[0;" << (myInterface.windowWidth - strlen(options[0])) / 2 << "H" << options[0] << "\033[22m" << std::endl;
-
-  //Print menu options
-  for (int i = 1; i < arraySize; ++i) {
-    if (i == selectedOption + 1) {
-			std::cout << "\033[" << (i * 2) + 6 << ";" << (((myInterface.windowWidth - strlen(options[i])) / 2) - 1) << "H" << "<" << std::endl;
-			std::cout << "\033[7m" << std::endl;
-			
-  	}
-
-    //Print options centered
-    std::cout << "\033[" << (i * 2) + 6 /*number added is starting point, the multiplier is gap between each item*/ << ";" << ((myInterface.windowWidth - strlen(options[i])) / 2) << "H" << options[i] << std::endl;
-
-    if (i == selectedOption + 1) {
-      std::cout << "\033[27m" << std::endl;  //Turn off highlighting
-			std::cout << "\033[" << (i * 2) + 6 << ";" << (((myInterface.windowWidth - strlen(options[i])) / 2) + strlen(options[i])) << "H" << ">" << std::endl;
-    }
-  }
-}
 
 int main() {
+	setenv("TERM", "xterm-256color", 1);
+
 	// Define menu options
-  const char* mainMenu[] = {"My Menu Name", "Run", "Options", "About"};
-	unsigned int arraySize = sizeof(mainMenu) / sizeof(mainMenu[0]);
+  const char* Menus[4][5] = {
+		{"Bouncing-Ball", "Run", "Options", "About"},
+		{"Run Menu", "Run New", "Back"},
+		{"Options", "Option 1", "Option 2", "Back"},
+		{"About", "Back"}
+	};
+
+	unsigned int arraySize = 0;
   int selectedOption = 0;
-  int choice;
+  int choice = 0;
+	int currentMenu = 0;
+	int prevMenu = 0;
 
   //Initialize ncurses
   initscr();
@@ -54,11 +40,18 @@ int main() {
 	std::cout << "\033[?25l";
 
   while (true) {
+
+		//Get the number of elements in the row
+		//Unfortunately we have to loop through till we encounter a null pointer because the array points to pointers.
+		arraySize = 0;
+		while (Menus[currentMenu][arraySize] != nullptr) {
+    	arraySize++;
+		}
+
 		myInterface.windowSizeUpdate();
+
     //Display the menu
-
-    displayGenericMenu(mainMenu, selectedOption, arraySize, myInterface);
-
+    displayGenericMenu(Menus[currentMenu], selectedOption, arraySize, myInterface);
 
     //Get user input
     choice = getch();
@@ -66,15 +59,59 @@ int main() {
     //Handle arrow key input
     switch (choice) {
     	case KEY_UP:
-    		selectedOption = (selectedOption - 1 + 3) % 3;
+				//If the key is up, decrement the selected option and obtain it's remainder when divided by the strings total size to wrap the value back to zero
+    		selectedOption = (selectedOption - 1 + (arraySize - 1)) % (arraySize -1);
+
     	break;
     	case KEY_DOWN:
-    	  selectedOption = (selectedOption + 1) % 3;
+				//Bassically the oposite of key up
+    	  selectedOption = (selectedOption + 1) % (arraySize -1);
     	break;
     	case 10:  //Enter key
       	std::cout << CLEARSCREEN << std::endl;  //Clear the screen before printing the message
-				std::cout << "\033[" << (myInterface.windowHeight / 2) << ";" << ((myInterface.windowWidth - strlen("Option   selected.")) / 2) << "H" << "Option " << selectedOption + 1 << " selected" << std::endl;
-      	getch();    //Wait for user input before returning to the menu
+				if(currentMenu == 0) {
+					//Save that we were here
+					prevMenu = currentMenu;
+					currentMenu = selectedOption + 1;
+					//Set to zero so the cursor is on the first option
+					selectedOption = 0;
+				}
+				//Check if selected option is last in array
+				else if(selectedOption + 2 == arraySize) {
+					//Go to previous menu
+					currentMenu = prevMenu;
+				}
+				else {
+					//Really wish I could use switch case
+					//Check if the current menu item is an option that opens more code and if so run that code
+					//Strmcp returns 0 if strings match
+					if(strcmp(Menus[currentMenu][(selectedOption)], "Run New") == 0)	{
+						std::cout << "Runing...";
+						refresh();
+						usleep(500000);
+					}
+					else if(strcmp(Menus[currentMenu][(selectedOption)], "Option 1") == 0) {
+						std::cout << "Done Option 1";
+						refresh();
+						usleep(500000);
+					}
+					else if(strcmp(Menus[currentMenu][(selectedOption)], "Option 2") == 0) {
+						std::cout << "Done Option 2";
+						refresh();
+						usleep(500000);
+					}
+					else {
+						//If somthing is wrong, leave a message and exit the program
+						std::cout << "This error should never surface but if it somhow did, I need to do somthing" << std::endl;
+						return(0);
+					}
+				}
+			break;
+
+				
+			//Move current menu to get make string hold diffrent value to get to value equal to proper menu
+			//Wait for user input before returning to the menu
+      getch();
     	break;
 		}
   }

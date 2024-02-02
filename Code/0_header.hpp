@@ -25,11 +25,11 @@ namespace Functions {
 
 
 class Interface {
-
   public:
 
   //Gets window size and also terminates program if window is too small
   int windowSizeUpdate();
+  void displayGenericMenu(const char* options[], int selectedOption, unsigned int arraySize, Interface &myInterface);
 
   unsigned int windowWidth;    //The Height of the terminal
   unsigned int windowHeight;   //The Width of the terminal
@@ -38,13 +38,12 @@ class Interface {
 
 };
 
-class SimInterface {
+class SimInterface : public Interface {
   public:
 
 
   //Updates map for window resizes and if window is too small after resize, an error is displayed.
   void updateMap();
-
 
   private:
 
@@ -64,18 +63,16 @@ class Ball {
     ballAngle = startBallAngle;
   }
   
-
   //Obtains the ball's new position and desired angle
   void setPosition(short int hitWallAndTilt);
   //Finds if wall was hit and returns 0 if not, and an angle of the wall that was hit if so
   short int wallisHit(unsigned int windowWidth, unsigned int windowHeight);
 
-
   private:
 
+  //Ball's angle
   double ballAngle;
   double OldBallAngle;
-
   //[0] is X and [1] is y
   int pointXY[2];
   int oldPointXY[2];

@@ -11,7 +11,8 @@
           "-g",
           "*.cpp",
           "-o",
-          "${fileDirname}/${fileBasenameNoExtension}"
+          "${fileDirname}/${fileBasenameNoExtension}",
+          "-lncurses"
         ],
         "options": {
           "cwd": "${fileDirname}"

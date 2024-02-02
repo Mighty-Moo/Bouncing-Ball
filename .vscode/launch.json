@@ -1,22 +1,12 @@
 {
+    "version": "0.2.0",
     "configurations": [
-        {
-            "name": "(gdb) Launch",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/${fileBasenameNoExtension}",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${fileDirname}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "gdb"
-        },
+
         {
             "name": "C/C++: clang++ build and debug active file",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "program": "${fileDirname}/main",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
@@ -24,7 +14,18 @@
             "externalConsole": false,
             "MIMode": "lldb",
             "preLaunchTask": "C/C++: clang++ build active file"
+        },
+
+            
+                {
+                    "name": "Attach to Process",
+                    "type": "cppdbg",
+                    "request": "attach",
+                    "program": "${workspaceFolder}/main",
+                    "processId": 67207
+                }
+            ]
         }
-    ],
-    "version": "2.0.0"
+        
+    ]
 }

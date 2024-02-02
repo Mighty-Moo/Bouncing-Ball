@@ -6,7 +6,7 @@
 
 
 //Main is in charge of calling and integrating all of these functions
-int runSim() {
+int runSim(int ballStartAngle) {
 
 
 
@@ -15,7 +15,7 @@ int runSim() {
 
   myInterface.windowSizeUpdate();
 
-  Ball myBall(myInterface.windowHeight/2, myInterface.windowWidth/2, -45);
+  Ball myBall(myInterface.windowHeight/2, myInterface.windowWidth/2, ballStartAngle);
 
   //Update window sizes and update map
   myInterface.windowSizeUpdate();

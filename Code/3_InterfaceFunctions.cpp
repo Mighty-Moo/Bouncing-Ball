@@ -2,8 +2,10 @@
     
 
 
+
+
 //Draws brick wall of '-'
-void Interface::drawWalls() {
+void SimInterface::drawWalls() {
 
 
   std::cout << CLEARSCREEN;
@@ -37,25 +39,9 @@ void Interface::drawWalls() {
 }
   
 
-//Gets window size and terminates program if window is too small
-int Interface::windowSizeUpdate() {
-  struct winsize size;
 
-  prevHeight = windowHeight;
-  prevWidth = windowWidth;
-
-  //Get window size
-  ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
   
-  //Set window size variables
-  windowHeight = size.ws_row;
-  windowWidth = size.ws_col;
-
-
-  return(0);
-}
-  
-void Interface::updateMap() {
+void SimInterface::updateMap() {
 
   bool error = false;
 
@@ -79,3 +65,4 @@ void Interface::updateMap() {
 
   }
 }
+
