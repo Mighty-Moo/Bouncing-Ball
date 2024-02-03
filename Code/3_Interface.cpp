@@ -18,6 +18,7 @@ int Interface::windowSizeUpdate() {
   return(0);
 }
 
+
 //Function to display the menu
 void Interface::displayGenericMenu(const char* options[], int selectedOption, unsigned int arraySize, Interface &myInterface) {
   //Clear the screen

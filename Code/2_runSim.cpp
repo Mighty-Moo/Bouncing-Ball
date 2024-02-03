@@ -6,32 +6,35 @@
 
 
 //Main is in charge of calling and integrating all of these functions
-int runSim(int ballStartAngle) {
-
-
+void runSim(int ballStartAngle) {
+  int choice = 0;
 
   //Create an instance of the Interface and Ball classes
   SimInterface myInterface;
 
+  //Update window size since Ball's constructor relies on it
   myInterface.windowSizeUpdate();
 
   Ball myBall(myInterface.windowHeight/2, myInterface.windowWidth/2, ballStartAngle);
+
 
   //Update window sizes and update map
   myInterface.windowSizeUpdate();
   myInterface.updateMap();
 
+  //Don't wait for input
+  nodelay(stdscr, TRUE);
 
+  //While user hasn't pressed enter
+  while(choice != 10) {
 
-  //Update window size after variable saves in case the player resized the screen
-  myInterface.windowSizeUpdate();
-
-  for (; ;) {
+    choice = getch();
 
 
     //Check if window hieght hasnt changed and if so, proceeds to output the ball animation
-    while (myInterface.windowSizeUpdate(), myInterface.windowHeight == myInterface.prevHeight && myInterface.windowWidth == myInterface.prevWidth) {
-
+    while (myInterface.windowSizeUpdate(), myInterface.windowHeight == myInterface.prevHeight && myInterface.windowWidth == myInterface.prevWidth && choice != 10) {
+      
+      choice = getch();
       //Animation delay
       usleep(100000);
 
@@ -43,5 +46,8 @@ int runSim(int ballStartAngle) {
     
   
   }
-  
+
+  //Reset wait for input to waiting for input
+  nodelay(stdscr, FALSE);
+
 }

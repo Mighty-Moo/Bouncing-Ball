@@ -1,10 +1,8 @@
 #include "0_header.hpp"
-    
 
 
 
-
-//Draws brick wall of '-'
+//Draws brick wall of '-' and 'H
 void SimInterface::drawWalls() {
 
 

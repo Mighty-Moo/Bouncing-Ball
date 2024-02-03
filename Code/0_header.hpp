@@ -5,9 +5,8 @@
 #include <sys/ioctl.h>
 #include <cmath>
 #include <unistd.h>
-#include <fstream>
-#include <fstream>
-#include <string>
+#include <ncurses.h>
+
 
 //For conditional compilation
 #define DEBU
@@ -16,12 +15,8 @@
 #define WALL_CHAR "H"
 #define WALL_BUFFER_SIZE (windowWidth / 5)
 
+void runSim(int ballStartAngle);
 
-namespace Functions {
-
-  int runSim();
-
-};
 
 
 class Interface {
