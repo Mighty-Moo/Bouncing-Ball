@@ -36,15 +36,19 @@ void runSim(int ballStartAngle) {
       
       choice = getch();
       //Animation delay
-      usleep(100000);
 
-      myBall.setPosition(myBall.wallisHit(myInterface.windowWidth, myInterface.windowHeight));
+      myBall.setPosition(myBall.wallisHit(myInterface.windowWidth, myInterface.windowHeight), myInterface.windowHeight);
+      usleep(myBall.balldelay());
 
     }
 
+    //Update map and scale ball position in a window size change
     myInterface.updateMap();
-    
-  
+    myBall.adjustPosition(myInterface.prevWidth, myInterface.prevHeight, myInterface.windowWidth, myInterface.windowHeight);
+    myInterface.windowSizeUpdate();
+    //Delay in case window is changed quickly and so we dont have to try to keep up with the impossible
+    usleep(100000);
+
   }
 
   //Reset wait for input to waiting for input

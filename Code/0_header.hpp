@@ -14,6 +14,7 @@
 #define CLEARSCREEN "\033[2J"
 #define WALL_CHAR "H"
 #define WALL_BUFFER_SIZE (windowWidth / 5)
+#define BASE_DELAY 500000
 
 void runSim(int ballStartAngle);
 
@@ -56,18 +57,25 @@ class Ball {
     pointXY[0] = startPointX;
     pointXY[1] = startPointY;
     ballAngle = startBallAngle;
+    accumulatedPosY = 0;
+    accumulatedPosX = 0;
   }
   
   //Obtains the ball's new position and desired angle
-  void setPosition(short int hitWallAndTilt);
+  void setPosition(short int hitWallAndTilt, unsigned int windowHeight);
   //Finds if wall was hit and returns 0 if not, and an angle of the wall that was hit if so
   short int wallisHit(unsigned int windowWidth, unsigned int windowHeight);
+  //Get ball animation delay
+  double balldelay();
+  void adjustPosition(unsigned int prevWindowWidth, unsigned int prevWindowHeight, unsigned int windowWidth, unsigned int windowHeight);
 
   private:
 
   //Ball's angle
   double ballAngle;
   double OldBallAngle;
+  double accumulatedPosY;
+  double accumulatedPosX;
   //[0] is X and [1] is y
   int pointXY[2];
   int oldPointXY[2];

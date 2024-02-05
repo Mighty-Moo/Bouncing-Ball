@@ -19,7 +19,7 @@ int main() {
 	int currentMenu = 0;
 	int prevMenu = 0;
 	//Set a default value for the ball's angle
-	int desiredBallAngle = 45;
+	int desiredBallAngle = 62;
 
   //Initialize ncurses
   initscr();
@@ -89,12 +89,13 @@ int main() {
 						usleep(500000);
 					}
 					else if(strcmp(Menus[currentMenu][(selectedOption +1)], "Change Ball's Angle") == 0) {
-						char choice;
+						char choice[3];
 						std::cout << "\033[39m\033[1m\033[" << (myInterface.windowHeight / 2) << ";" << (myInterface.windowWidth - strlen("Set to: ")) / 2 << "H" << "Set to: " << "\033[22m";
 						//Turn on visible input characters so the users can see what is being typed
 						echo();
 						refresh();
-						desiredBallAngle = getch() % 360;
+						getnstr(choice, 3);
+						desiredBallAngle = std::stoi(choice) % 365;
 						usleep(400000);
 						//Turn off visible input characters so the users can't see what is being typed
 						noecho();
