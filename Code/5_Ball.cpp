@@ -1,4 +1,4 @@
-#include "0_header.hpp"
+#include "0_Header.hpp"
 
 
 
@@ -50,7 +50,12 @@ void Ball::setPosition(short int hitWallAndTilt, unsigned int windowHeight) {
     pointXY[0] = windowHeight -1;
   }
 
-  std::cout << "\033[" << pointXY[0] << ";" << pointXY[1] << "H◯" /* << "\033[" << oldPointXY[0] << ";" << oldPointXY[1] << "H " */ << std::endl;
+  //Conditional compilation
+  #ifdef DEBUG
+    std::cout << "\033[" << pointXY[0] << ";" << pointXY[1] << "H◯" << std::endl;
+  #else
+    std::cout << "\033[" << pointXY[0] << ";" << pointXY[1] << "H◯" << "\033[" << oldPointXY[0] << ";" << oldPointXY[1] << "H " << std::endl;
+  #endif
 
 }
 
@@ -79,14 +84,17 @@ double Ball::balldelay() {
 
 short int Ball::wallisHit(unsigned int windowWidth, unsigned int windowHeight) {
 
+  //If a vertical wall was hit, return the angle of a vertical wall
   if(pointXY[1] == (windowWidth / 5) + 2 || pointXY[1] == ((windowWidth / 5) * 4) - 2 ) {
 
   return(180);
   }
+  //If a horizontal wall was hit, return the angle of a horizontal wall
   else if(pointXY[0] == windowHeight -1 || pointXY[0] == 1) {
 
   return(90);
   }
+  //Otherwise no wall was hit so return 0 (while 0 could be an angle, it just will say to the other function that no wall was hit. If the angle 0 is nescacarry, we will use 360)
   else {
 
   return(0);

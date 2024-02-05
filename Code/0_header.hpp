@@ -74,6 +74,7 @@ class Ball {
   //Ball's angle
   double ballAngle;
   double OldBallAngle;
+  //The acuumulated values of decimal of the ball's position
   double accumulatedPosY;
   double accumulatedPosX;
   //[0] is X and [1] is y

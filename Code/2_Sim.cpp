@@ -1,7 +1,8 @@
 // Project started on Monday, November 27th 2023
 // Ball physics and walls UI completed on Friday, January 26th 2024
-// Make a simulation where a ball bounces off a wall and you control the ball by changing the angle of a wall
-#include "0_header.hpp"
+// Everything connected for first release on Monday, February 5th 2024
+// Make a simulation where a ball bounces off a wall
+#include "0_Header.hpp"
 
 
 
@@ -47,7 +48,7 @@ void runSim(int ballStartAngle) {
     myBall.adjustPosition(myInterface.prevWidth, myInterface.prevHeight, myInterface.windowWidth, myInterface.windowHeight);
     myInterface.windowSizeUpdate();
     //Delay in case window is changed quickly and so we dont have to try to keep up with the impossible
-    usleep(100000);
+    usleep(400000);
 
   }
 
