@@ -4,7 +4,7 @@ Bouncing-Ball is a console-based simulator for a ball or other bouncing object l
 
 ## Using
 
-Download the Bouning-Ball .exec (executable file). When downloaded, double click the file.
+Download the Bouning-Ball .exec (executable file). When downloaded, extract the contents of the .zip file the double click the file.
 
 ## Authors
 
