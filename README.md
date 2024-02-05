@@ -4,10 +4,13 @@ Bouncing-Ball is a console-based simulator for a ball or other bouncing object l
 
 ## Using
 
-Download the Bouning-Ball .exec (executable file). When downloaded, extract the contents of the .zip file the double click the file.
+1. Download the Bouning-Ball .zip and extract its contents.
+2. Double-click the .exec file to run
 
 ## Authors
 
 * Morgan Shimp
 
 ## License
+
+This program is licensed under an MIT License. View the LICENSE.md file for details.
