@@ -1,5 +1,13 @@
 # Bouncing-Ball
 
-Bouncing-Ball is a simulator for a ball bouncing off a wall.
-By inputting a ball's speed and angle you can simulate a bouncing ball like never before.
+Bouncing-Ball is a console-based simulator for a ball or other bouncing object like light. Using the menu, you can specify the ball's angle in the next simulation run. and even the simulation speed.
 
+## Using
+
+Download the Bouning-Ball .exec (executable file). When downloaded, extract the contents of the .zip file the double click the file.
+
+## Authors
+
+* Morgan Shimp
+
+## License
