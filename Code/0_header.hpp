@@ -14,9 +14,8 @@
 #define CLEARSCREEN "\033[2J"
 #define WALL_CHAR "H"
 #define WALL_BUFFER_SIZE (windowWidth / 5)
-#define BASE_DELAY 500000
 
-void runSim(int ballStartAngle);
+void runSim(int ballStartAngle, int delayBaseUnit);
 
 
 
@@ -66,7 +65,7 @@ class Ball {
   //Finds if wall was hit and returns 0 if not, and an angle of the wall that was hit if so
   short int wallisHit(unsigned int windowWidth, unsigned int windowHeight);
   //Get ball animation delay
-  double balldelay();
+  double balldelay(int baseDelay);
   void adjustPosition(unsigned int prevWindowWidth, unsigned int prevWindowHeight, unsigned int windowWidth, unsigned int windowHeight);
 
   private:

@@ -7,7 +7,7 @@
 
 
 //Main is in charge of calling and integrating all of these functions
-void runSim(int ballStartAngle) {
+void runSim(int ballStartAngle, int delayBaseUnit) {
   int choice = 0;
 
   //Create an instance of the Interface and Ball classes
@@ -39,7 +39,7 @@ void runSim(int ballStartAngle) {
       //Animation delay
 
       myBall.setPosition(myBall.wallisHit(myInterface.windowWidth, myInterface.windowHeight), myInterface.windowHeight);
-      usleep(myBall.balldelay());
+      usleep(myBall.balldelay(delayBaseUnit));
 
     }
 

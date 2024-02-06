@@ -59,7 +59,7 @@ void Ball::setPosition(short int hitWallAndTilt, unsigned int windowHeight) {
 
 }
 
-double Ball::balldelay() {
+double Ball::balldelay(int baseDelay) {
 
 
   //Get distance every step in this sim for acurate delay time 
@@ -70,11 +70,11 @@ double Ball::balldelay() {
   double currentDistance = sqrt(adjustedSpeedX * adjustedSpeedX + adjustedSpeedY * adjustedSpeedY);
 
   if (currentDistance == 0.0) {
-    return(BASE_DELAY);
+    return(baseDelay);
   }
 
   //Derive delay time from the steps info
-  double adjustedDelay = BASE_DELAY * (1.0 / currentDistance);
+  double adjustedDelay = baseDelay * (1.0 / currentDistance);
 
   return(adjustedDelay);
 

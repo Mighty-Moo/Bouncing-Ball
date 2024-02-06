@@ -9,7 +9,7 @@ int main() {
   const char* Menus[4][5] = {
 		{"Bouncing-Ball", "Run", "Options", "About"},
 		{"Run Menu", "Run New", "Back"},
-		{"Options", "Change Ball's Angle", "Option 2", "Back"},
+		{"Options", "Change Ball's Angle", "Change Simulation Speed", "Back"},
 		{"About", "Back"}
 	};
 
@@ -20,7 +20,7 @@ int main() {
 	int prevMenu = 0;
 	//Set a default value for the ball's angle
 	int desiredBallAngle = 62;
-	int desiredSimSpeed = 100000;
+	int desiredSimSpeed = 500000;
 
   //Initialize ncurses
   initscr();
@@ -86,7 +86,7 @@ int main() {
 					//Strmcp returns 0 if strings match
 					if(strcmp(Menus[currentMenu][(selectedOption +1)], "Run New") == 0)	{
 						std::cout << "Runing...";
-						runSim(desiredBallAngle);
+						runSim(desiredBallAngle, desiredSimSpeed);
 						usleep(500000);
 					}
 					else if(strcmp(Menus[currentMenu][(selectedOption +1)], "Change Ball's Angle") == 0) {
@@ -96,7 +96,8 @@ int main() {
 						echo();
 						refresh();
 						getnstr(choice, 3);
-						desiredBallAngle = std::stoi(choice) % 365;
+						//Turn char input to a number and wrap to 360
+						desiredBallAngle = std::stoi(choice) % 360;
 						usleep(400000);
 						//Turn off visible input characters so the users can't see what is being typed
 						noecho();
@@ -104,19 +105,27 @@ int main() {
 					}
 					else if(strcmp(Menus[currentMenu][(selectedOption +1)],"Change Simulation Speed") == 0) {
 						char choice[4];
+						
+						//Print centered text
 						std::cout << "\033[39m\033[1m\033[" << (myInterface.windowHeight / 2) << ";" << (myInterface.windowWidth - strlen("Enter Value in milliseconds: ")) / 2 << "H" << "Enter Value in milliseconds: " << "\033[22m";
+						//Don't hide user input
 						echo();
-						getnstr(choice, 4);
-						desiredSimSpeed = std::stoi(choice);
-						std::cout << "Process Succesful";
 						refresh();
+						//Get user input
+						getnstr(choice, 4);
+						//If user inputs 1000 milloseconds, delay one second
+						desiredSimSpeed = std::stoi(choice) * 2000;
+						//Give feedback
+						std::cout << CLEARSCREEN << "\033[39m\033[1m\033[" << (myInterface.windowHeight / 2) << ";" << (myInterface.windowWidth - strlen("Process Succesful")) / 2 << "H" << "Process Succesful" << "\033[22m" << std::endl;
+						refresh();
+						//Hide user input
 						noecho();
-						usleep(100000);
-						usleep(500000);
+						//Delay so user can proccess feedback
+						usleep(200000);
 					}
 					else {
 						//If somthing is wrong, leave a message and exit the program
-						std::cout << "This error should never surface but if it somhow did, I need to do somthing" << std::endl;
+						std::cout << "Program Selected Inexsistent Option (Error 1)" << std::endl;
 						return(0);
 					}
 				}
