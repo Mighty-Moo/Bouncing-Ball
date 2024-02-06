@@ -20,6 +20,7 @@ int main() {
 	int prevMenu = 0;
 	//Set a default value for the ball's angle
 	int desiredBallAngle = 62;
+	int desiredSimSpeed = 100000;
 
   //Initialize ncurses
   initscr();
@@ -101,9 +102,16 @@ int main() {
 						noecho();
 						refresh();
 					}
-					else if(strcmp(Menus[currentMenu][(selectedOption +1)], "Option 2") == 0) {
-						std::cout << "Done Option 2";
+					else if(strcmp(Menus[currentMenu][(selectedOption +1)],"Change Simulation Speed") == 0) {
+						char choice[4];
+						std::cout << "\033[39m\033[1m\033[" << (myInterface.windowHeight / 2) << ";" << (myInterface.windowWidth - strlen("Enter Value in milliseconds: ")) / 2 << "H" << "Enter Value in milliseconds: " << "\033[22m";
+						echo();
+						getnstr(choice, 4);
+						desiredSimSpeed = std::stoi(choice);
+						std::cout << "Process Succesful";
 						refresh();
+						noecho();
+						usleep(100000);
 						usleep(500000);
 					}
 					else {
