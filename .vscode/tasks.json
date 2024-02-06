@@ -12,6 +12,7 @@
           "*.cpp",
           "-o",
           "${fileDirname}/${fileBasenameNoExtension}",
+          "-std=c++17",
           "-lncurses"
         ],
         "options": {

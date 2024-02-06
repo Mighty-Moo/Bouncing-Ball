@@ -10,7 +10,7 @@ int main() {
 		{"Bouncing-Ball", "Run", "Options", "About"},
 		{"Run Menu", "Run New", "Back"},
 		{"Options", "Change Ball's Angle", "Change Simulation Speed", "Back"},
-		{"About", "Back"}
+		{"About", "View the included \"README.md\" and \"LICENSE.md\" for information"}
 	};
 
 	unsigned int arraySize = 0;
