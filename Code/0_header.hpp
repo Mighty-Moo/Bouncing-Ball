@@ -15,8 +15,8 @@
 #define WALL_CHAR "H"
 #define WALL_BUFFER_SIZE (windowWidth / 5)
 
+// Forward declaration of runSim (Sim.cpp)
 void runSim(int ballStartAngle, int delayBaseUnit);
-
 
 
 class Interface {
@@ -26,23 +26,21 @@ class Interface {
   int windowSizeUpdate();
   void displayGenericMenu(const char* options[], int selectedOption, unsigned int arraySize, Interface &myInterface);
 
-  unsigned int windowWidth;    //The Height of the terminal
-  unsigned int windowHeight;   //The Width of the terminal
-  unsigned int prevWidth;      //The Previous Width of the terminal
-  unsigned int prevHeight;     //The Previous Height of the terminal
+  unsigned int windowWidth;    // The width of the terminal
+  unsigned int windowHeight;   // The height of the terminal
+  unsigned int prevWidth;      // The previous width of the terminal
+  unsigned int prevHeight;     // The previous height of the terminal
 
 };
 
 class SimInterface : public Interface {
   public:
 
-
   //Updates map for window resizes and if window is too small after resize, an error is displayed.
   void updateMap();
 
   private:
 
-  //Draws walls
   void drawWalls();
 
 };
@@ -70,6 +68,7 @@ class Ball {
 
   private:
 
+  // TODO - is it possible to initlize variables down here?
   //Ball's angle
   double ballAngle;
   double OldBallAngle;
